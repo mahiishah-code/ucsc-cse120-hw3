@@ -1,0 +1,14 @@
+version: '3.9'
+
+services:
+  api:
+    build: .
+    container_name: slugguide-api
+    ports:
+      - "8000:8000"
+    environment:
+      - GEMINI_API_KEY=${GEMINI_API_KEY}
+      - GOOGLE_API_KEY=${GOOGLE_API_KEY}
+      - GEMMA_MODEL=${GEMMA_MODEL:-gemma-4-26b-a4b-it}
+      - PORT=${PORT:-8000}
+    restart: unless-stopped
